@@ -58,21 +58,21 @@ public class Main {
 //    }
 
     private static boolean isSlap(String word) {
-        if(word.length() == 0)
+        if(word.length() < 2)
             return false;
         else if(word.length() == 2 && word.charAt(0) == 'A' && word.charAt(1) == 'H')
             return true;
-        else if (word.charAt(0) == 'A' && word.charAt(1) == 'B'){
-            if(isSlap(word.substring(2, word.length() - 1)) && word.charAt(word.length() - 1) == 'C'){
+        else if (word.equals("ABC"))
+            return true;
+        else if (word.charAt(0) == 'A' && word.charAt(1) == 'B' && word.charAt(word.length() - 1) == 'C'){
+            if(isSlap(word.substring(2,word.length() - 1))){
                 return true;
             }
         }
-        else if (word.charAt(0) == 'A' && word.length() > 2){
-            if (isSlip(word.substring(1, word.length() - 2)) && word.charAt(word.length() - 1) == 'C'){
-                return true;
-            }
+        else if (word.charAt(0) == 'A' && isSlip(word.substring(1, word.length() - 1)) && word.charAt(word.length() - 1) == 'C'){
+           return true;
         }
-
+        return false;
     }
 
     private static boolean isSlip(String word) {
