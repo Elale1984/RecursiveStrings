@@ -60,13 +60,19 @@ public class Main {
     private static boolean isSlap(String word) {
         if(word.length() == 0)
             return false;
-        else if(word.length() == 2 && word.charAt(0) == 'A')
+        else if(word.length() == 2 && word.charAt(0) == 'A' && word.charAt(1) == 'H')
             return true;
+        else if (word.charAt(0) == 'A' && word.charAt(1) == 'B'){
+            if(isSlap(word.substring(2, word.length() - 1)) && word.charAt(word.length() - 1) == 'C'){
+                return true;
+            }
+        }
         else if (word.charAt(0) == 'A' && word.length() > 2){
             if (isSlip(word.substring(1, word.length() - 2)) && word.charAt(word.length() - 1) == 'C'){
                 return true;
             }
         }
+
     }
 
     private static boolean isSlip(String word) {
